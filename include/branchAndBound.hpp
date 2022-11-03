@@ -4,6 +4,21 @@
 #include <iostream>
 #include <vector>
 #include "Path.hpp"
+#include <queue>
+#include <unordered_set>
+
+class Node
+{
+public:
+    Node *parent;
+    // std::vector<int> path;
+    // Set of all vertices not present in the path
+    // std::unordered_set<int> availableVertices;
+    int vertex;
+    int lowerBound;
+
+    Node(int vertex, int lowerBound, Node *parent);
+};
 
 class BranchAndBound
 {
@@ -12,6 +27,7 @@ private:
     static int *minWeights;
 
     static GraphMatrix *graph;
+    static int graphSize;
     static int startingVertex;
 
     static int upperBound;
@@ -39,6 +55,9 @@ public:
      * @param startingVertex Index of the starting vertex
      */
     static Path execute(GraphMatrix *graph, int startingVertex);
+
+    static std::unordered_set<int> getAvailableVertices(Node *node);
+    static std::vector<int> getPath(Node *node);
 };
 
 #endif

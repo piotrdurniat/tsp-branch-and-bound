@@ -29,29 +29,34 @@ void Tests::fileInstanceTest(GraphMatrix *graph, int iterCount, std::string inst
     }
 }
 
-void Tests::randomInstanceTest(int minSize, int maxSize, int iterCount, std::string outputPath)
+void Tests::randomInstanceTest(int minSize, int maxSize, int iterCountPerInstance, int instanceCountPerSize, std::string outputPath)
 {
-
+    const int startingVertex = 0;
     FileUtils::writeRandomInstanceTestHeader(outputPath);
     Timer timer;
     GraphMatrix *graph;
+    printf("%i, %i\n", iterCountPerInstance, instanceCountPerSize);
 
-    srand(1);
     for (int vertexCount = minSize; vertexCount <= maxSize; vertexCount++)
     {
+        srand(1);
+        // Average time for all instances of this size
         long unsigned averageTime = 0;
-        for (int i = 0; i < iterCount; ++i)
+        for (int i = 0; i < instanceCountPerSize; ++i)
         {
             graph = graphGenerator::getRandom(vertexCount, 10);
 
-            timer.start();
-            // bruteForceSearch(graph, startingVertex);
-            averageTime += timer.getElapsedNs();
+            for (int j = 0; j < iterCountPerInstance; ++j)
+            {
+                timer.start();
+                BranchAndBound::execute(graph, startingVertex);
 
+                averageTime += timer.getElapsedNs();
+            }
             delete graph;
             graph = NULL;
         }
-        averageTime /= iterCount;
+        averageTime /= iterCountPerInstance * instanceCountPerSize;
         FileUtils::appendRandomInstanceTestResult(outputPath, vertexCount, averageTime);
     }
     printf("Done. Saved to file.\n");

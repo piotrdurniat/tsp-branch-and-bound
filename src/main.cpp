@@ -91,9 +91,10 @@ void randomInstanceTest()
     const char *iniSection = "random_instance_test";
     const int minSize = atoi(ini.GetValue(iniSection, "min_size", "1"));
     const int maxSize = atoi(ini.GetValue(iniSection, "max_size", "1"));
-    const int iterations = atoi(ini.GetValue(iniSection, "iterations", "1"));
+    const int instanceCountPerSize = atoi(ini.GetValue(iniSection, "instance_num_per_size", "1"));
+    const int iterCountPerInstance = atoi(ini.GetValue(iniSection, "iter_num_per_instance", "1"));
     const std::string outputFile = ini.GetValue(iniSection, "output", "UNKNOWN");
     const std::string outputFilePath = outputDir + "/" + outputFile;
 
-    Tests::randomInstanceTest(minSize, maxSize, iterations, outputFilePath);
+    Tests::randomInstanceTest(minSize, maxSize, iterCountPerInstance, instanceCountPerSize, outputFilePath);
 }

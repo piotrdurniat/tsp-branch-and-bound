@@ -11,10 +11,11 @@ namespace Tests
      *
      * @param minVerticesNum Minimum number of vertices (inclusive)
      * @param maxVerticesNum Maximum number of vertices (inclusive)
-     * @param iterCount Number of algorithm iterations for each instance size
-     */
-    void randomInstanceTest(int minVerticesNum, int maxVerticesNum, int iterCount, std::string outputPath);
+     * @param instanceCountPerSize Number of instances for each size
+     * @param iterCountPerInstance Number of algorithm iterations for each instance
 
+     */
+    void randomInstanceTest(int minSize, int maxSize, int iterCountPerInstance, int instanceCountPerSize, std::string outputPath);
     // Checks if results are correct for all of the provided instances
     void testAlgorithm(std::vector<std::string> instances);
 
@@ -27,6 +28,7 @@ namespace Tests
      * @param outputPath Path of the results file for single instance test
      **/
     void fileInstanceTest(GraphMatrix *graph, int iterCount, std::string instanceName, std::string outputPath);
+
 };
 
 #endif
