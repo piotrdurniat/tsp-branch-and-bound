@@ -105,12 +105,7 @@ Path BranchAndBound::execute(GraphMatrix *graph, int startingVertex)
                 allNodes.push_back(child);
                 pq.push(child);
             }
-            else
-            {
-                break;
-            }
         }
-        // delete node;
     }
     if (VERBOSE)
     {
@@ -125,10 +120,6 @@ Path BranchAndBound::execute(GraphMatrix *graph, int startingVertex)
         delete node;
     }
     return Path(bestPath, upperBound);
-
-    // free node as we have already stored edges `(i, j)` in vector.
-    // So no need for a parent node while printing the solution.
-    // delete node;
 }
 
 void BranchAndBound::printMinWeights()

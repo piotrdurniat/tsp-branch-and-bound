@@ -53,16 +53,16 @@ def save_results(results, dir_name, file_name):
 
 
 def main():
-    dir_name = "./results/results-for-report"
+    dir_name = "./results/results-report"
 
     result_files = [
         "m6_atsp.csv",
         "m9_atsp.csv",
         "m12_atsp.csv",
         "burma14_tsp.csv",
-        "br17_atsp.csv",
-        "gr21_tsp.csv",
-        "gr24_tsp.csv",
+        "gr17_tsp.csv",
+        # "gr21_tsp.csv",
+        # "gr24_tsp.csv",
     ]
 
     file_name = "gr24_tsp.csv"
