@@ -61,11 +61,8 @@ def main():
         "m12_atsp.csv",
         "burma14_tsp.csv",
         "gr17_tsp.csv",
-        # "gr21_tsp.csv",
-        # "gr24_tsp.csv",
+        "gr21_tsp.csv",
     ]
-
-    file_name = "gr24_tsp.csv"
 
     results = []
     for file_name in result_files:
